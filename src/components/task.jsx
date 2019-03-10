@@ -11,7 +11,7 @@ class Task extends Component {
           <button onClick={this.props.onComplete}>{this.props.status ? "✓" : "Done"}</button>
         </td>{" "}
         <td>
-          <button>Delete</button>
+          <button onClick={this.props.onDelete}>Delete</button>
         </td>
       </tr>
     );

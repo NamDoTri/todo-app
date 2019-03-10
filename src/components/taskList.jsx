@@ -10,7 +10,7 @@ class TaskList extends Component {
       <React.Fragment>
         {" "}
         {this.props.tasks.map(task => (
-          <Task key={task.id} label={task.value} status={task.completed} onComplete={this.props.onComplete}/>
+          <Task key={task.id} label={task.value} status={task.completed} onComplete={()=>this.props.onComplete(task.id)} onDelete={()=>this.props.onDelete(task.id)}/>
         ))}
       </React.Fragment>
     );

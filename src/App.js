@@ -15,7 +15,7 @@ class App extends Component {
   addTask = event => {
     const tasks = [...this.state.tasks];
     let newTask = {
-      id: tasks.length == 0 ? 0 : tasks[tasks.length - 1].id + 1,
+      id: tasks.length === 0 ? 0 : tasks[tasks.length - 1].id + 1,
       value: event.target.taskName.value,
       completed: false
     };
@@ -24,8 +24,14 @@ class App extends Component {
     event.target.taskName.value = "";
     event.preventDefault();
   };
-  completeTask = () =>{
-    console.log("task completed")
+  completeTask = id =>{
+    const tasks = [...this.state.tasks];
+    let completedTask = {}
+    const index = tasks.indexOf()
+  }
+  deleteTask = id => {
+    const tasks = [...this.state.tasks.filter(task => task.id!==id)];
+    this.setState({tasks: tasks})
   }
   render() {
     return (
@@ -36,7 +42,7 @@ class App extends Component {
           <input id="addTask" type="text" name="taskName" required />
           <input type="submit" value="Add" />
         </form>
-        <TaskList tasks={this.state.tasks} onComplete={this.completeTask}/>
+        <TaskList tasks={this.state.tasks} onComplete={this.completeTask} onDelete={this.deleteTask}/>
       </React.Fragment>
     );
   }
