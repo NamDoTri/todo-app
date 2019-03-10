@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
     this.state = {
       tasks: [
-        
+        { id: 0, value: "Buy chicken", completed: true },
+        { id: 1, value: "Play games", completed: false }
       ]
     };
   }
@@ -23,6 +24,9 @@ class App extends Component {
     event.target.taskName.value = "";
     event.preventDefault();
   };
+  completeTask = () =>{
+    console.log("task completed")
+  }
   render() {
     return (
       <React.Fragment>
@@ -32,7 +36,7 @@ class App extends Component {
           <input id="addTask" type="text" name="taskName" required />
           <input type="submit" value="Add" />
         </form>
-        <TaskList tasks={this.state.tasks} />
+        <TaskList tasks={this.state.tasks} onComplete={this.completeTask}/>
       </React.Fragment>
     );
   }
